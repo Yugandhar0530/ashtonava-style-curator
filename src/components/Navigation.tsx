@@ -2,47 +2,29 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Search, User, ShoppingBag, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  return (
-    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-lavender">
+  return <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-lavender">
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left section */}
           <div className="flex items-center space-x-8">
-            <Link to="/" className="font-display font-bold text-xl text-deep-plum">
-              Ashtonava
-            </Link>
+            
             <div className="hidden md:flex items-center space-x-6">
-              <Link 
-                to="/shop" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-              >
+              <Link to="/shop" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors">
                 SHOP
               </Link>
-              <Link 
-                to="/collections" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-              >
+              <Link to="/collections" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors">
                 COLLECTIONS
               </Link>
-              <Link 
-                to="/blog" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-              >
+              <Link to="/blog" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors">
                 BLOG
               </Link>
             </div>
           </div>
 
           {/* Center - New Arrivals (optional) */}
-          <div className="hidden lg:block">
-            <span className="font-body font-semibold text-xs text-deep-plum tracking-wider">
-              NEW ARRIVALS
-            </span>
-          </div>
+          
 
           {/* Right section */}
           <div className="flex items-center space-x-4">
@@ -64,40 +46,22 @@ const Navigation = () => {
             </Link>
             
             {/* Mobile menu button */}
-            <Button 
-              variant="ghost" 
-              size="icon" 
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
+            <Button variant="ghost" size="icon" className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
               {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
             </Button>
           </div>
         </div>
 
         {/* Mobile menu */}
-        {isMenuOpen && (
-          <div className="md:hidden border-t border-lavender py-4">
+        {isMenuOpen && <div className="md:hidden border-t border-lavender py-4">
             <div className="flex flex-col space-y-4">
-              <Link 
-                to="/shop" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <Link to="/shop" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors" onClick={() => setIsMenuOpen(false)}>
                 SHOP
               </Link>
-              <Link 
-                to="/collections" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <Link to="/collections" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors" onClick={() => setIsMenuOpen(false)}>
                 COLLECTIONS
               </Link>
-              <Link 
-                to="/blog" 
-                className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors"
-                onClick={() => setIsMenuOpen(false)}
-              >
+              <Link to="/blog" className="font-body font-medium text-sm text-accent-black hover:text-deep-plum transition-colors" onClick={() => setIsMenuOpen(false)}>
                 BLOG
               </Link>
               <Button variant="ghost" size="sm" className="justify-start">
@@ -105,11 +69,8 @@ const Navigation = () => {
                 Search
               </Button>
             </div>
-          </div>
-        )}
+          </div>}
       </div>
-    </nav>
-  );
+    </nav>;
 };
-
 export default Navigation;
