@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium ring-offset-background transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -15,12 +15,20 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        // Ashtonava Premium Variants
+        "premium-primary": "bg-pure-white text-accent-black shadow-button hover:shadow-premium hover:-translate-y-0.5 rounded-full font-body font-medium transition-all duration-300 ease-premium",
+        "premium-secondary": "bg-accent-black text-pure-white shadow-button hover:shadow-premium hover:-translate-y-0.5 rounded-full font-body font-medium transition-all duration-300 ease-premium",
+        "hero-cta": "bg-pure-white text-accent-black shadow-button hover:shadow-premium hover:-translate-y-1 hover:scale-105 rounded-full font-body font-semibold transition-all duration-300 ease-premium",
+        "size-pill": "bg-soft-lilac text-deep-plum border border-lavender hover:bg-deep-plum hover:text-pure-white rounded-full font-body font-medium transition-all duration-200",
+        "size-pill-active": "bg-deep-plum text-pure-white rounded-full font-body font-medium",
       },
       size: {
         default: "h-10 px-4 py-2",
         sm: "h-9 rounded-md px-3",
         lg: "h-11 rounded-md px-8",
+        xl: "h-14 px-10 py-4 text-base",
         icon: "h-10 w-10",
+        pill: "h-8 px-4 text-sm",
       },
     },
     defaultVariants: {
