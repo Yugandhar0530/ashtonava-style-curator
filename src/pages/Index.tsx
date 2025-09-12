@@ -76,10 +76,9 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background font-body">
-      <Navigation />
-      
-      {/* Hero Section */}
+      {/* Hero Section with integrated navigation */}
       <section className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden">
+        <Navigation transparent={true} />
         {/* Radial gradient overlay */}
         <div className="absolute inset-0 bg-gradient-radial opacity-30" />
         

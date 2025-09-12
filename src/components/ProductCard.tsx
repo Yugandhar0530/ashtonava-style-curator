@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Heart, ShoppingCart } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { useToast } from "@/hooks/use-toast";
 
 interface ProductCardProps {
   id: string;
@@ -25,6 +27,25 @@ const ProductCard = ({
 }: ProductCardProps) => {
   const [selectedSize, setSelectedSize] = useState<string>("");
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const { addToCart } = useCart();
+  const { toast } = useToast();
+
+  const handleBuyNow = () => {
+    if (sizes.length > 0 && !selectedSize) {
+      toast({
+        title: "Please select a size",
+        description: "Choose a size before adding to cart",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    addToCart({ id, name, subtitle, price, image, colors }, selectedSize, colors[0]);
+    toast({
+      title: "Added to cart!",
+      description: `${name} has been added to your cart`,
+    });
+  };
 
   return (
     <div className="group relative bg-card rounded-xl overflow-hidden shadow-card hover:shadow-premium transition-all duration-300 hover:-translate-y-1">
@@ -98,6 +119,7 @@ const ProductCard = ({
             size="sm" 
             className="flex-1"
             disabled={sizes.length > 0 && !selectedSize}
+            onClick={handleBuyNow}
           >
             <ShoppingCart className="w-4 h-4 mr-2" />
             BUY NOW

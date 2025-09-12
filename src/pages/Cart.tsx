@@ -2,49 +2,12 @@ import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
-import pinkShirt from "@/assets/pink-shirt.jpg";
-import whiteShirt from "@/assets/white-shirt.jpg";
+import { useCart } from "@/contexts/CartContext";
 
 const Cart = () => {
-  const [cartItems, setCartItems] = useState([
-    {
-      id: "1",
-      name: "PREMIUM LINEN COTTON SHIRT",
-      subtitle: "Tailored Comfort — Everyday Elegance",
-      price: 649,
-      image: pinkShirt,
-      size: "L",
-      color: "Pink",
-      quantity: 1,
-    },
-    {
-      id: "2",
-      name: "CLASSIC WHITE SHIRT",
-      subtitle: "Timeless Essential — Professional Comfort",
-      price: 599,
-      image: whiteShirt,
-      size: "M",
-      color: "White",
-      quantity: 2,
-    },
-  ]);
-
+  const { cartItems, updateQuantity, removeFromCart } = useCart();
   const [promoCode, setPromoCode] = useState("");
   const [appliedPromo, setAppliedPromo] = useState("");
-
-  const updateQuantity = (id: string, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCartItems(prev => prev.filter(item => item.id !== id));
-    } else {
-      setCartItems(prev => prev.map(item => 
-        item.id === id ? { ...item, quantity: newQuantity } : item
-      ));
-    }
-  };
-
-  const removeItem = (id: string) => {
-    setCartItems(prev => prev.filter(item => item.id !== id));
-  };
 
   const applyPromoCode = () => {
     if (promoCode.toLowerCase() === "ashtonava10") {
@@ -132,7 +95,7 @@ const Cart = () => {
                         <Button
                           variant="ghost"
                           size="icon"
-                          onClick={() => removeItem(item.id)}
+                          onClick={() => removeFromCart(item.id)}
                           className="text-mid-plum hover:text-destructive"
                         >
                           <Trash2 className="w-4 h-4" />
