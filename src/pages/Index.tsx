@@ -3,7 +3,7 @@ import Navigation from "@/components/Navigation";
 import ProductCard from "@/components/ProductCard";
 import CollectionTile from "@/components/CollectionTile";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ArrowRight, ShoppingCart, Heart } from "lucide-react";
 import heroModel from "@/assets/hero-model.jpg";
 import pinkShirt from "@/assets/pink-shirt.jpg";
 import whiteShirt from "@/assets/white-shirt.jpg";
@@ -136,7 +136,7 @@ const Index = () => {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Carousel */}
+            {/* Left side - Product Image Only */}
             <div className="relative">
               <div className="aspect-square rounded-2xl overflow-hidden bg-soft-lilac shadow-card">
                 <img 
@@ -184,9 +184,85 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right side - Product highlight */}
+            {/* Right side - Product Image + Details + Purchase Options */}
             <div className="lg:pl-8">
-              <ProductCard {...newArrivals[currentCarouselIndex]} />
+              <div className="bg-card rounded-xl overflow-hidden shadow-card">
+                {/* Product Image */}
+                <div className="aspect-square bg-soft-lilac">
+                  <img 
+                    src={newArrivals[currentCarouselIndex].image}
+                    alt={newArrivals[currentCarouselIndex].name}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                
+                {/* Product Details */}
+                <div className="p-6">
+                  <div className="mb-4">
+                    <h3 className="font-body font-semibold text-xs text-deep-plum tracking-wider uppercase mb-1">
+                      {newArrivals[currentCarouselIndex].name}
+                    </h3>
+                    <p className="font-display text-lg text-accent-black mb-2">
+                      {newArrivals[currentCarouselIndex].subtitle}
+                    </p>
+                    <p className="font-body font-semibold text-lg text-accent-black">
+                      ₹ {newArrivals[currentCarouselIndex].price}/-
+                    </p>
+                  </div>
+
+                  {/* Size Selection */}
+                  <div className="mb-4">
+                    <p className="font-body text-sm text-mid-plum mb-2">Size:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {newArrivals[currentCarouselIndex].sizes.map((size) => (
+                        <Button
+                          key={size}
+                          variant="size-pill"
+                          size="pill"
+                          className="text-xs"
+                        >
+                          {size}
+                        </Button>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Color Selection */}
+                  {newArrivals[currentCarouselIndex].colors && newArrivals[currentCarouselIndex].colors.length > 0 && (
+                    <div className="mb-4">
+                      <p className="font-body text-sm text-mid-plum mb-2">Color:</p>
+                      <div className="flex gap-2">
+                        {newArrivals[currentCarouselIndex].colors.map((color, index) => (
+                          <div
+                            key={index}
+                            className="w-6 h-6 rounded-full border-2 border-lavender cursor-pointer hover:scale-110 transition-transform"
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Action Buttons */}
+                  <div className="flex gap-3">
+                    <Button 
+                      variant="premium-primary" 
+                      size="sm" 
+                      className="flex-1"
+                    >
+                      <ShoppingCart className="w-4 h-4 mr-2" />
+                      ADD TO CART
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="shrink-0"
+                    >
+                      <Heart className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
