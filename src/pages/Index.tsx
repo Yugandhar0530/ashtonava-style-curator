@@ -9,74 +9,59 @@ import heroModel from "@/assets/hero-model.jpg";
 import pinkShirt from "@/assets/pink-shirt.jpg";
 import whiteShirt from "@/assets/white-shirt.jpg";
 import navyShirt from "@/assets/navy-shirt.jpg";
-
 const Index = () => {
   const [currentCarouselIndex, setCurrentCarouselIndex] = useState(0);
-
-  const newArrivals = [
-    {
-      id: "1",
-      name: "PREMIUM LINEN COTTON SHIRT",
-      subtitle: "Tailored Comfort — Everyday Elegance",
-      price: 649,
-      image: pinkShirt,
-      sizes: ["M", "L", "XL", "XXL"],
-      colors: ["#F8BBD9", "#FFFFFF", "#1a1a2e"],
-      isNewArrival: true,
-    },
-    {
-      id: "2", 
-      name: "CLASSIC WHITE SHIRT",
-      subtitle: "Timeless Essential — Professional Comfort",
-      price: 599,
-      image: whiteShirt,
-      sizes: ["S", "M", "L", "XL", "XXL"],
-      colors: ["#FFFFFF"],
-      isNewArrival: true,
-    },
-    {
-      id: "3",
-      name: "NAVY CASUAL LINEN",
-      subtitle: "Weekend Ready — Relaxed Sophistication",
-      price: 699,
-      image: navyShirt,
-      sizes: ["M", "L", "XL"],
-      colors: ["#1a1a2e", "#2c3e50"],
-      isNewArrival: true,
-    },
-  ];
-
-  const collections = [
-    {
-      title: "Prime Edition",
-      subtitle: "Everyday Essentials",
-      image: whiteShirt,
-      href: "/collections/prime",
-    },
-    {
-      title: "Elite Edition", 
-      subtitle: "Signature Cuts & Fabrics",
-      image: pinkShirt,
-      href: "/collections/elite",
-    },
-    {
-      title: "Beyond Edition",
-      subtitle: "Limited Run — Experimental",
-      image: navyShirt,
-      href: "/collections/beyond",
-    },
-  ];
-
+  const newArrivals = [{
+    id: "1",
+    name: "PREMIUM LINEN COTTON SHIRT",
+    subtitle: "Tailored Comfort — Everyday Elegance",
+    price: 649,
+    image: pinkShirt,
+    sizes: ["M", "L", "XL", "XXL"],
+    colors: ["#F8BBD9", "#FFFFFF", "#1a1a2e"],
+    isNewArrival: true
+  }, {
+    id: "2",
+    name: "CLASSIC WHITE SHIRT",
+    subtitle: "Timeless Essential — Professional Comfort",
+    price: 599,
+    image: whiteShirt,
+    sizes: ["S", "M", "L", "XL", "XXL"],
+    colors: ["#FFFFFF"],
+    isNewArrival: true
+  }, {
+    id: "3",
+    name: "NAVY CASUAL LINEN",
+    subtitle: "Weekend Ready — Relaxed Sophistication",
+    price: 699,
+    image: navyShirt,
+    sizes: ["M", "L", "XL"],
+    colors: ["#1a1a2e", "#2c3e50"],
+    isNewArrival: true
+  }];
+  const collections = [{
+    title: "Prime Edition",
+    subtitle: "Everyday Essentials",
+    image: whiteShirt,
+    href: "/collections/prime"
+  }, {
+    title: "Elite Edition",
+    subtitle: "Signature Cuts & Fabrics",
+    image: pinkShirt,
+    href: "/collections/elite"
+  }, {
+    title: "Beyond Edition",
+    subtitle: "Limited Run — Experimental",
+    image: navyShirt,
+    href: "/collections/beyond"
+  }];
   const nextProduct = () => {
-    setCurrentCarouselIndex((prev) => (prev + 1) % newArrivals.length);
+    setCurrentCarouselIndex(prev => (prev + 1) % newArrivals.length);
   };
-
   const prevProduct = () => {
-    setCurrentCarouselIndex((prev) => (prev - 1 + newArrivals.length) % newArrivals.length);
+    setCurrentCarouselIndex(prev => (prev - 1 + newArrivals.length) % newArrivals.length);
   };
-
-  return (
-    <div className="min-h-screen bg-background font-body">
+  return <div className="min-h-screen bg-background font-body">
       {/* Hero Section with integrated navigation */}
       <section className="relative min-h-screen flex items-center bg-gradient-hero overflow-hidden">
         <Navigation transparent={true} />
@@ -88,11 +73,7 @@ const Index = () => {
             {/* Left side - Lifestyle image */}
             <div className="relative">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-premium">
-                <img 
-                  src={heroModel} 
-                  alt="Ashtonava Premium Menswear Model"
-                  className="w-full h-full object-cover"
-                />
+                <img src={heroModel} alt="Ashtonava Premium Menswear Model" className="w-full h-full object-cover" />
               </div>
             </div>
 
@@ -107,11 +88,7 @@ const Index = () => {
                 New arrivals in breathable linen & premium cotton. Limited stock.
               </p>
               
-              <Button 
-                variant="hero-cta" 
-                size="xl"
-                className="mb-4"
-              >
+              <Button variant="hero-cta" size="xl" className="mb-4">
                 SHOP NOW
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Button>
@@ -140,48 +117,24 @@ const Index = () => {
             {/* Left side - Luxury Product Image */}
             <div className="relative">
               <div className="aspect-square rounded-lg overflow-hidden bg-soft-pearl shadow-luxury border border-warm-gold/10">
-                <img 
-                  src={newArrivals[currentCarouselIndex].image}
-                  alt={newArrivals[currentCarouselIndex].name}
-                  className="w-full h-full object-cover"
-                />
+                <img src={newArrivals[currentCarouselIndex].image} alt={newArrivals[currentCarouselIndex].name} className="w-full h-full object-cover" />
               </div>
               
               {/* Carousel Controls */}
               <div className="absolute inset-y-0 left-0 flex items-center">
-                <Button 
-                  variant="premium-primary" 
-                  size="icon"
-                  onClick={prevProduct}
-                  className="-ml-6 shadow-premium"
-                >
+                <Button variant="premium-primary" size="icon" onClick={prevProduct} className="-ml-6 shadow-premium">
                   <ChevronLeft className="w-5 h-5" />
                 </Button>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center">
-                <Button 
-                  variant="premium-primary" 
-                  size="icon"
-                  onClick={nextProduct}
-                  className="-mr-6 shadow-premium"
-                >
+                <Button variant="premium-primary" size="icon" onClick={nextProduct} className="-mr-6 shadow-premium">
                   <ChevronRight className="w-5 h-5" />
                 </Button>
               </div>
 
               {/* Dots indicator */}
               <div className="flex justify-center mt-6 gap-2">
-                {newArrivals.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentCarouselIndex(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentCarouselIndex 
-                        ? 'bg-deep-plum w-6' 
-                        : 'bg-lavender hover:bg-mid-plum'
-                    }`}
-                  />
-                ))}
+                {newArrivals.map((_, index) => <button key={index} onClick={() => setCurrentCarouselIndex(index)} className={`w-2 h-2 rounded-full transition-all ${index === currentCarouselIndex ? 'bg-deep-plum w-6' : 'bg-lavender hover:bg-mid-plum'}`} />)}
               </div>
             </div>
 
@@ -190,11 +143,7 @@ const Index = () => {
               <div className="bg-card rounded-lg overflow-hidden shadow-luxury border border-warm-gold/10">
                 {/* Luxury Product Image */}
                 <div className="aspect-square bg-soft-pearl">
-                  <img 
-                    src={newArrivals[currentCarouselIndex].image}
-                    alt={newArrivals[currentCarouselIndex].name}
-                    className="w-full h-full object-cover"
-                  />
+                  <img src={newArrivals[currentCarouselIndex].image} alt={newArrivals[currentCarouselIndex].name} className="w-full h-full object-cover" />
                 </div>
                 
                 {/* Luxury Product Details */}
@@ -216,50 +165,29 @@ const Index = () => {
                   <div className="mb-6">
                     <p className="font-body text-sm text-rich-burgundy mb-3 uppercase tracking-wider font-medium">Size:</p>
                     <div className="flex flex-wrap gap-3">
-                      {newArrivals[currentCarouselIndex].sizes.map((size) => (
-                        <Button
-                          key={size}
-                          variant="size-pill"
-                          size="pill"
-                          className="text-sm min-w-[3rem]"
-                        >
+                      {newArrivals[currentCarouselIndex].sizes.map(size => <Button key={size} variant="size-pill" size="pill" className="text-sm min-w-[3rem]">
                           {size}
-                        </Button>
-                      ))}
+                        </Button>)}
                     </div>
                   </div>
 
                   {/* Luxury Color Selection */}
-                  {newArrivals[currentCarouselIndex].colors && newArrivals[currentCarouselIndex].colors.length > 0 && (
-                    <div className="mb-6">
+                  {newArrivals[currentCarouselIndex].colors && newArrivals[currentCarouselIndex].colors.length > 0 && <div className="mb-6">
                       <p className="font-body text-sm text-rich-burgundy mb-3 uppercase tracking-wider font-medium">Color:</p>
                       <div className="flex gap-3">
-                        {newArrivals[currentCarouselIndex].colors.map((color, index) => (
-                          <div
-                            key={index}
-                            className="w-8 h-8 rounded-full border-2 border-deep-charcoal/20 cursor-pointer hover:scale-110 hover:border-warm-gold transition-all duration-200"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
+                        {newArrivals[currentCarouselIndex].colors.map((color, index) => <div key={index} className="w-8 h-8 rounded-full border-2 border-deep-charcoal/20 cursor-pointer hover:scale-110 hover:border-warm-gold transition-all duration-200" style={{
+                      backgroundColor: color
+                    }} />)}
                       </div>
-                    </div>
-                  )}
+                    </div>}
 
                   {/* Luxury Action Buttons */}
                   <div className="flex gap-4">
-                    <Button 
-                      variant="luxury-primary" 
-                      size="lg" 
-                      className="flex-1"
-                    >
+                    <Button variant="luxury-primary" size="lg" className="flex-1">
                       <ShoppingCart className="w-5 h-5 mr-3" />
                       ADD TO COLLECTION
                     </Button>
-                    <Button
-                      variant="luxury-secondary"
-                      size="icon"
-                      className="shrink-0 w-12 h-12"
-                    >
+                    <Button variant="luxury-secondary" size="icon" className="shrink-0 w-12 h-12">
                       <Heart className="w-5 h-5" />
                     </Button>
                   </div>
@@ -284,61 +212,13 @@ const Index = () => {
           </div>
 
           {/* Versace-Inspired Grid Layout */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-8">
-            {/* Men's Section - Large */}
-            <div className="relative group overflow-hidden rounded-lg bg-gradient-luxury aspect-[4/5] lg:aspect-[3/4]">
-              <img 
-                src={heroModel}
-                alt="Men's Collection"
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/90 via-deep-charcoal/20 to-transparent"></div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-12 text-center">
-                <h3 className="font-display text-5xl md:text-6xl font-light text-cream-ivory mb-6 tracking-wide">
-                  MEN'S
-                </h3>
-                <div className="w-12 h-0.5 bg-warm-gold mx-auto mb-8"></div>
-                <Link to="/men">
-                  <Button variant="luxury-gold" size="xl" className="px-12 py-4 text-lg font-semibold tracking-wider">
-                    SHOP NOW
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            {/* Women's Section - Large */}
-            <div className="relative group overflow-hidden rounded-lg bg-gradient-luxury aspect-[4/5] lg:aspect-[3/4]">
-              <img 
-                src={pinkShirt}
-                alt="Women's Collection"
-                className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-rich-burgundy/90 via-rich-burgundy/20 to-transparent"></div>
-              
-              <div className="absolute bottom-0 left-0 right-0 p-12 text-center">
-                <h3 className="font-display text-5xl md:text-6xl font-light text-cream-ivory mb-6 tracking-wide">
-                  WOMEN'S
-                </h3>
-                <div className="w-12 h-0.5 bg-warm-gold mx-auto mb-8"></div>
-                <Link to="/women">
-                  <Button variant="luxury-gold" size="xl" className="px-12 py-4 text-lg font-semibold tracking-wider">
-                    SHOP NOW
-                  </Button>
-                </Link>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Three Edition Collections */}
           <div className="grid md:grid-cols-3 gap-8">
             {/* Prime Edition */}
             <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
-              <img 
-                src={whiteShirt}
-                alt="Prime Edition"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src={whiteShirt} alt="Prime Edition" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -358,11 +238,7 @@ const Index = () => {
 
             {/* Elite Edition */}
             <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
-              <img 
-                src={pinkShirt}
-                alt="Elite Edition"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src={pinkShirt} alt="Elite Edition" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-rich-burgundy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -382,11 +258,7 @@ const Index = () => {
 
             {/* Beyond Edition */}
             <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
-              <img 
-                src={navyShirt}
-                alt="Beyond Edition"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              <img src={navyShirt} alt="Beyond Edition" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               
               <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -419,11 +291,7 @@ const Index = () => {
           </p>
           
           <div className="max-w-md mx-auto flex gap-4">
-            <input
-              type="email"
-              placeholder="Enter your email"
-              className="flex-1 px-4 py-3 rounded-full bg-pure-white/10 border border-pure-white/20 text-pure-white placeholder:text-pure-white/60 focus:outline-none focus:ring-2 focus:ring-lavender"
-            />
+            <input type="email" placeholder="Enter your email" className="flex-1 px-4 py-3 rounded-full bg-pure-white/10 border border-pure-white/20 text-pure-white placeholder:text-pure-white/60 focus:outline-none focus:ring-2 focus:ring-lavender" />
             <Button variant="premium-primary" className="shrink-0">
               Subscribe
             </Button>
@@ -480,8 +348,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
