@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import ProductCard from "@/components/ProductCard";
 import CollectionTile from "@/components/CollectionTile";
@@ -135,10 +136,10 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left side - Product Image Only */}
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            {/* Left side - Luxury Product Image */}
             <div className="relative">
-              <div className="aspect-square rounded-2xl overflow-hidden bg-soft-lilac shadow-card">
+              <div className="aspect-square rounded-lg overflow-hidden bg-soft-pearl shadow-luxury border border-warm-gold/10">
                 <img 
                   src={newArrivals[currentCarouselIndex].image}
                   alt={newArrivals[currentCarouselIndex].name}
@@ -184,11 +185,11 @@ const Index = () => {
               </div>
             </div>
 
-            {/* Right side - Product Image + Details + Purchase Options */}
-            <div className="lg:pl-8">
-              <div className="bg-card rounded-xl overflow-hidden shadow-card">
-                {/* Product Image */}
-                <div className="aspect-square bg-soft-lilac">
+            {/* Right side - Luxury Product Details */}
+            <div className="lg:pl-12">
+              <div className="bg-card rounded-lg overflow-hidden shadow-luxury border border-warm-gold/10">
+                {/* Luxury Product Image */}
+                <div className="aspect-square bg-soft-pearl">
                   <img 
                     src={newArrivals[currentCarouselIndex].image}
                     alt={newArrivals[currentCarouselIndex].name}
@@ -196,30 +197,31 @@ const Index = () => {
                   />
                 </div>
                 
-                {/* Product Details */}
-                <div className="p-6">
-                  <div className="mb-4">
-                    <h3 className="font-body font-semibold text-xs text-deep-plum tracking-wider uppercase mb-1">
+                {/* Luxury Product Details */}
+                <div className="p-8">
+                  <div className="mb-6">
+                    <h3 className="font-body font-medium text-xs text-rich-burgundy tracking-widest uppercase mb-2">
                       {newArrivals[currentCarouselIndex].name}
                     </h3>
-                    <p className="font-display text-lg text-accent-black mb-2">
+                    <p className="font-display text-2xl text-deep-charcoal mb-4 font-light">
                       {newArrivals[currentCarouselIndex].subtitle}
                     </p>
-                    <p className="font-body font-semibold text-lg text-accent-black">
+                    <div className="w-8 h-0.5 bg-warm-gold mb-4"></div>
+                    <p className="font-body font-semibold text-2xl text-deep-charcoal">
                       ₹ {newArrivals[currentCarouselIndex].price}/-
                     </p>
                   </div>
 
-                  {/* Size Selection */}
-                  <div className="mb-4">
-                    <p className="font-body text-sm text-mid-plum mb-2">Size:</p>
-                    <div className="flex flex-wrap gap-2">
+                  {/* Luxury Size Selection */}
+                  <div className="mb-6">
+                    <p className="font-body text-sm text-rich-burgundy mb-3 uppercase tracking-wider font-medium">Size:</p>
+                    <div className="flex flex-wrap gap-3">
                       {newArrivals[currentCarouselIndex].sizes.map((size) => (
                         <Button
                           key={size}
                           variant="size-pill"
                           size="pill"
-                          className="text-xs"
+                          className="text-sm min-w-[3rem]"
                         >
                           {size}
                         </Button>
@@ -227,15 +229,15 @@ const Index = () => {
                     </div>
                   </div>
 
-                  {/* Color Selection */}
+                  {/* Luxury Color Selection */}
                   {newArrivals[currentCarouselIndex].colors && newArrivals[currentCarouselIndex].colors.length > 0 && (
-                    <div className="mb-4">
-                      <p className="font-body text-sm text-mid-plum mb-2">Color:</p>
-                      <div className="flex gap-2">
+                    <div className="mb-6">
+                      <p className="font-body text-sm text-rich-burgundy mb-3 uppercase tracking-wider font-medium">Color:</p>
+                      <div className="flex gap-3">
                         {newArrivals[currentCarouselIndex].colors.map((color, index) => (
                           <div
                             key={index}
-                            className="w-6 h-6 rounded-full border-2 border-lavender cursor-pointer hover:scale-110 transition-transform"
+                            className="w-8 h-8 rounded-full border-2 border-deep-charcoal/20 cursor-pointer hover:scale-110 hover:border-warm-gold transition-all duration-200"
                             style={{ backgroundColor: color }}
                           />
                         ))}
@@ -243,22 +245,22 @@ const Index = () => {
                     </div>
                   )}
 
-                  {/* Action Buttons */}
-                  <div className="flex gap-3">
+                  {/* Luxury Action Buttons */}
+                  <div className="flex gap-4">
                     <Button 
-                      variant="premium-primary" 
-                      size="sm" 
+                      variant="luxury-primary" 
+                      size="lg" 
                       className="flex-1"
                     >
-                      <ShoppingCart className="w-4 h-4 mr-2" />
-                      ADD TO CART
+                      <ShoppingCart className="w-5 h-5 mr-3" />
+                      ADD TO COLLECTION
                     </Button>
                     <Button
-                      variant="ghost"
+                      variant="luxury-secondary"
                       size="icon"
-                      className="shrink-0"
+                      className="shrink-0 w-12 h-12"
                     >
-                      <Heart className="w-4 h-4" />
+                      <Heart className="w-5 h-5" />
                     </Button>
                   </div>
                 </div>
@@ -268,22 +270,139 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Collections Preview */}
-      <section className="py-20 bg-gradient-subtle">
-        <div className="container mx-auto px-4 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="font-display text-3xl md:text-4xl font-semibold text-deep-plum mb-4">
+      {/* Versace-Style Collections Section */}
+      <section className="py-32 bg-background">
+        <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
+          <div className="text-center mb-20">
+            <h2 className="font-display text-5xl md:text-6xl font-light text-deep-charcoal mb-8 tracking-wide">
               Our Collections
             </h2>
-            <p className="font-body text-mid-plum max-w-md mx-auto">
-              Three distinctive lines, each crafted with purpose and precision.
+            <div className="w-16 h-0.5 bg-warm-gold mx-auto mb-8"></div>
+            <p className="font-body text-xl text-rich-burgundy max-w-3xl mx-auto leading-relaxed">
+              Three distinctive collections, each crafted with uncompromising attention to detail and timeless elegance.
             </p>
           </div>
 
+          {/* Versace-Inspired Grid Layout */}
+          <div className="grid lg:grid-cols-2 gap-8 mb-8">
+            {/* Men's Section - Large */}
+            <div className="relative group overflow-hidden rounded-lg bg-gradient-luxury aspect-[4/5] lg:aspect-[3/4]">
+              <img 
+                src={heroModel}
+                alt="Men's Collection"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/90 via-deep-charcoal/20 to-transparent"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-12 text-center">
+                <h3 className="font-display text-5xl md:text-6xl font-light text-cream-ivory mb-6 tracking-wide">
+                  MEN'S
+                </h3>
+                <div className="w-12 h-0.5 bg-warm-gold mx-auto mb-8"></div>
+                <Link to="/men">
+                  <Button variant="luxury-gold" size="xl" className="px-12 py-4 text-lg font-semibold tracking-wider">
+                    SHOP NOW
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Women's Section - Large */}
+            <div className="relative group overflow-hidden rounded-lg bg-gradient-luxury aspect-[4/5] lg:aspect-[3/4]">
+              <img 
+                src={pinkShirt}
+                alt="Women's Collection"
+                className="w-full h-full object-cover opacity-80 group-hover:opacity-90 transition-opacity duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-rich-burgundy/90 via-rich-burgundy/20 to-transparent"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-12 text-center">
+                <h3 className="font-display text-5xl md:text-6xl font-light text-cream-ivory mb-6 tracking-wide">
+                  WOMEN'S
+                </h3>
+                <div className="w-12 h-0.5 bg-warm-gold mx-auto mb-8"></div>
+                <Link to="/women">
+                  <Button variant="luxury-gold" size="xl" className="px-12 py-4 text-lg font-semibold tracking-wider">
+                    SHOP NOW
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/* Three Edition Collections */}
           <div className="grid md:grid-cols-3 gap-8">
-            {collections.map((collection, index) => (
-              <CollectionTile key={index} {...collection} />
-            ))}
+            {/* Prime Edition */}
+            <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
+              <img 
+                src={whiteShirt}
+                alt="Prime Edition"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h4 className="font-display text-2xl font-light text-cream-ivory mb-3">
+                  Prime Edition
+                </h4>
+                <p className="font-body text-sm text-cream-ivory/80 mb-4 uppercase tracking-wider">
+                  Everyday Essentials
+                </p>
+                <Link to="/collections?filter=prime">
+                  <Button variant="luxury-secondary" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Explore
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Elite Edition */}
+            <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
+              <img 
+                src={pinkShirt}
+                alt="Elite Edition"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-rich-burgundy/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h4 className="font-display text-2xl font-light text-cream-ivory mb-3">
+                  Elite Edition
+                </h4>
+                <p className="font-body text-sm text-cream-ivory/80 mb-4 uppercase tracking-wider">
+                  Signature Cuts & Fabrics
+                </p>
+                <Link to="/collections?filter=elite">
+                  <Button variant="luxury-secondary" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Explore
+                  </Button>
+                </Link>
+              </div>
+            </div>
+
+            {/* Beyond Edition */}
+            <div className="relative group overflow-hidden rounded-lg aspect-[3/4] bg-soft-pearl">
+              <img 
+                src={navyShirt}
+                alt="Beyond Edition"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-deep-charcoal/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-center transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <h4 className="font-display text-2xl font-light text-cream-ivory mb-3">
+                  Beyond Edition
+                </h4>
+                <p className="font-body text-sm text-cream-ivory/80 mb-4 uppercase tracking-wider">
+                  Limited Run — Experimental
+                </p>
+                <Link to="/collections?filter=beyond">
+                  <Button variant="luxury-secondary" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    Explore
+                  </Button>
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -4,58 +4,61 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Ashtonava Design System - Premium Contemporary Menswear */
+/* Ashtonava Design System - Luxury Premium Menswear */
 
 @layer base {
   :root {
-    /* Ashtonava Brand Colors */
-    --deep-plum: 315 80% 13%;           /* #2b0f2b */
-    --mid-plum: 293 27% 31%;            /* #5b3f63 */
-    --lavender: 295 25% 76%;            /* #cab9d1 */
-    --soft-lilac: 315 15% 91%;         /* #e9e1e8 */
-    --accent-black: 0 0% 4%;           /* #0a0a0a */
-    --pure-white: 0 0% 100%;           /* #ffffff */
+    /* Luxury Brand Colors - Rich, Premium, Old-World Elegance */
+    --deep-charcoal: 0 0% 8%;           /* #141414 - Rich charcoal */
+    --warm-gold: 45 100% 50%;           /* #FFD700 - Luxury gold accent */
+    --cream-ivory: 48 100% 97%;         /* #FFFEF7 - Warm cream */
+    --soft-pearl: 0 0% 95%;             /* #F2F2F2 - Pearl grey */
+    --rich-burgundy: 0 45% 20%;         /* #571C1C - Deep burgundy */
+    --accent-black: 0 0% 2%;            /* #050505 - Deep black */
+    --pure-white: 0 0% 100%;            /* #ffffff */
     
-    /* Semantic Color Mapping */
-    --background: var(--pure-white);
-    --foreground: var(--accent-black);
+    /* Luxury Semantic Color Mapping */
+    --background: var(--cream-ivory);
+    --foreground: var(--deep-charcoal);
     
     --card: var(--pure-white);
-    --card-foreground: var(--accent-black);
+    --card-foreground: var(--deep-charcoal);
     
     --popover: var(--pure-white);
-    --popover-foreground: var(--accent-black);
+    --popover-foreground: var(--deep-charcoal);
     
-    --primary: var(--deep-plum);
-    --primary-foreground: var(--pure-white);
+    --primary: var(--deep-charcoal);
+    --primary-foreground: var(--cream-ivory);
     
-    --secondary: var(--soft-lilac);
-    --secondary-foreground: var(--deep-plum);
+    --secondary: var(--soft-pearl);
+    --secondary-foreground: var(--deep-charcoal);
     
-    --muted: var(--soft-lilac);
-    --muted-foreground: var(--mid-plum);
+    --muted: var(--soft-pearl);
+    --muted-foreground: var(--rich-burgundy);
     
-    --accent: var(--lavender);
-    --accent-foreground: var(--deep-plum);
+    --accent: var(--warm-gold);
+    --accent-foreground: var(--deep-charcoal);
     
     --destructive: 0 84% 60%;
     --destructive-foreground: var(--pure-white);
     
-    --border: var(--lavender);
-    --input: var(--soft-lilac);
-    --ring: var(--mid-plum);
+    --border: var(--soft-pearl);
+    --input: var(--cream-ivory);
+    --ring: var(--warm-gold);
     
     --radius: 0.75rem;
     
-    /* Brand Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(var(--deep-plum)) 0%, hsl(var(--mid-plum)) 50%, hsl(var(--lavender)) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(var(--soft-lilac)) 0%, hsl(var(--pure-white)) 100%);
-    --gradient-radial: radial-gradient(circle at center, hsl(var(--pure-white) / 0.1) 0%, transparent 70%);
+    /* Luxury Brand Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--deep-charcoal)) 0%, hsl(var(--rich-burgundy)) 50%, hsl(var(--warm-gold) / 0.1) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(var(--soft-pearl) / 0.3) 0%, hsl(var(--cream-ivory)) 100%);
+    --gradient-luxury: linear-gradient(45deg, hsl(var(--deep-charcoal)) 0%, hsl(var(--rich-burgundy)) 100%);
+    --gradient-radial: radial-gradient(circle at center, hsl(var(--warm-gold) / 0.05) 0%, transparent 70%);
     
-    /* Shadows */
-    --shadow-premium: 0 10px 30px -10px hsl(var(--deep-plum) / 0.2);
-    --shadow-card: 0 4px 20px -4px hsl(var(--mid-plum) / 0.15);
-    --shadow-button: 0 2px 8px -2px hsl(var(--accent-black) / 0.1);
+    /* Luxury Shadows */
+    --shadow-premium: 0 20px 40px -10px hsl(var(--deep-charcoal) / 0.3);
+    --shadow-card: 0 8px 30px -8px hsl(var(--deep-charcoal) / 0.1);
+    --shadow-button: 0 4px 15px -2px hsl(var(--deep-charcoal) / 0.2);
+    --shadow-luxury: 0 25px 50px -12px hsl(var(--deep-charcoal) / 0.4);
     
     /* Animations */
     --transition-premium: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);

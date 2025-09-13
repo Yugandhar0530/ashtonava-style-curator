@@ -15,12 +15,15 @@ const buttonVariants = cva(
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
-        // Ashtonava Premium Variants
-        "premium-primary": "bg-pure-white text-accent-black shadow-button hover:shadow-premium hover:-translate-y-0.5 rounded-full font-body font-medium transition-all duration-300 ease-premium",
-        "premium-secondary": "bg-accent-black text-pure-white shadow-button hover:shadow-premium hover:-translate-y-0.5 rounded-full font-body font-medium transition-all duration-300 ease-premium",
-        "hero-cta": "bg-pure-white text-accent-black shadow-button hover:shadow-premium hover:-translate-y-1 hover:scale-105 rounded-full font-body font-semibold transition-all duration-300 ease-premium",
-        "size-pill": "bg-soft-lilac text-deep-plum border border-lavender hover:bg-deep-plum hover:text-pure-white rounded-full font-body font-medium transition-all duration-200",
-        "size-pill-active": "bg-deep-plum text-pure-white rounded-full font-body font-medium",
+        // Luxury Premium Variants
+        "luxury-primary": "bg-deep-charcoal text-cream-ivory shadow-luxury hover:shadow-premium hover:-translate-y-1 hover:scale-105 font-body font-medium transition-all duration-300 ease-premium border border-warm-gold/20",
+        "luxury-secondary": "bg-cream-ivory text-deep-charcoal shadow-button hover:shadow-card hover:-translate-y-0.5 font-body font-medium transition-all duration-300 border border-deep-charcoal/10",
+        "luxury-gold": "bg-warm-gold text-deep-charcoal shadow-button hover:shadow-premium hover:-translate-y-1 font-body font-semibold transition-all duration-300",
+        "hero-cta": "bg-deep-charcoal text-cream-ivory shadow-luxury hover:shadow-premium hover:-translate-y-1 hover:scale-105 font-body font-semibold transition-all duration-300 ease-premium border border-warm-gold/30",
+        "size-pill": "bg-soft-pearl text-deep-charcoal border border-deep-charcoal/20 hover:bg-deep-charcoal hover:text-cream-ivory font-body font-medium transition-all duration-200",
+        "size-pill-active": "bg-deep-charcoal text-cream-ivory border border-warm-gold font-body font-medium",
+        "premium-primary": "bg-deep-charcoal text-cream-ivory shadow-button hover:shadow-card hover:-translate-y-0.5 font-body font-medium transition-all duration-300",
+        "premium-secondary": "bg-soft-pearl text-deep-charcoal shadow-button hover:shadow-card hover:-translate-y-0.5 font-body font-medium transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",

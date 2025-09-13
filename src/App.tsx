@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
 import Index from "./pages/Index";
 import Collections from "./pages/Collections";
+import Men from "./pages/Men";
 import Cart from "./pages/Cart";
 import Account from "./pages/Account";
 import NotFound from "./pages/NotFound";
@@ -22,6 +23,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/collections" element={<Collections />} />
+            <Route path="/men" element={<Men />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/account" element={<Account />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

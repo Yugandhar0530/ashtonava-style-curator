@@ -1,8 +1,9 @@
-import { useState } from "react";
 import Navigation from "@/components/Navigation";
 import ProductCard from "@/components/ProductCard";
+import Breadcrumb from "@/components/Breadcrumb";
 import { Button } from "@/components/ui/button";
-import { Filter, Grid, List } from "lucide-react";
+import { Filter, Grid, List, SlidersHorizontal } from "lucide-react";
+import { useState } from "react";
 import pinkShirt from "@/assets/pink-shirt.jpg";
 import whiteShirt from "@/assets/white-shirt.jpg";
 import navyShirt from "@/assets/navy-shirt.jpg";
@@ -99,49 +100,58 @@ const Collections = () => {
     <div className="min-h-screen bg-background font-body">
       <Navigation />
       
-      {/* Hero Section */}
-      <section className="py-16 bg-gradient-subtle">
-        <div className="container mx-auto px-4 lg:px-8 text-center">
-          <h1 className="font-display text-4xl md:text-5xl font-semibold text-deep-plum mb-4">
-            Collections
-          </h1>
-          <p className="font-body text-lg text-mid-plum max-w-2xl mx-auto">
-            Discover our carefully curated collections of premium menswear, each piece designed with precision and crafted with care.
-          </p>
+      {/* Luxury Hero Section with Breadcrumb */}
+      <section className="pt-32 pb-24 bg-gradient-subtle">
+        <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
+          <Breadcrumb items={[{ label: "Homepage", href: "/" }, { label: "Collections" }]} />
+          
+          <div className="text-center mb-16">
+            <h1 className="font-display text-5xl md:text-7xl font-light text-deep-charcoal mb-8 tracking-wide">
+              Collections
+            </h1>
+            <div className="w-24 h-0.5 bg-warm-gold mx-auto mb-8"></div>
+            <p className="font-body text-xl text-rich-burgundy max-w-3xl mx-auto leading-relaxed">
+              Discover our carefully curated collections of premium menswear, each piece designed with precision and crafted with uncompromising attention to detail.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Filter and Products Section */}
-      <section className="py-12">
-        <div className="container mx-auto px-4 lg:px-8">
-          {/* Filter Bar */}
-          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 mb-8">
-            <div className="flex flex-wrap items-center gap-4">
-              {/* Collection Filter */}
-              <div className="flex flex-wrap gap-2">
-                {collections.map((collection) => (
-                  <Button
-                    key={collection.id}
-                    variant={selectedCollection === collection.id ? "premium-secondary" : "secondary"}
-                    size="sm"
-                    onClick={() => setSelectedCollection(collection.id)}
-                  >
-                    {collection.name}
-                  </Button>
-                ))}
-              </div>
+      {/* On.com Inspired Filter and Products Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-6 lg:px-12 max-w-7xl">
+          
+          {/* Category Navigation (On.com Style) */}
+          <div className="mb-12">
+            <div className="flex items-center justify-center space-x-1 bg-soft-pearl rounded-lg p-1 max-w-3xl mx-auto">
+              {collections.map((collection) => (
+                <Button
+                  key={collection.id}
+                  variant={selectedCollection === collection.id ? "luxury-primary" : "ghost"}
+                  size="lg"
+                  onClick={() => setSelectedCollection(collection.id)}
+                  className="flex-1 font-body text-sm tracking-wide"
+                >
+                  {collection.name}
+                </Button>
+              ))}
+            </div>
+          </div>
 
+          {/* Filter Bar with Luxury Spacing */}
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 mb-16">
+            <div className="flex flex-wrap items-center gap-6">
               {/* Size Filter */}
-              <div className="flex items-center gap-2">
-                <span className="font-body text-sm text-mid-plum">Size:</span>
-                <div className="flex gap-1">
+              <div className="flex items-center gap-4">
+                <span className="font-body text-sm text-rich-burgundy font-medium uppercase tracking-wider">Size:</span>
+                <div className="flex gap-2">
                   {sizes.map((size) => (
                     <Button
                       key={size}
                       variant={selectedSize === size ? "size-pill-active" : "size-pill"}
                       size="pill"
                       onClick={() => setSelectedSize(size)}
-                      className="text-xs"
+                      className="text-xs min-w-[2.5rem]"
                     >
                       {size === "all" ? "All" : size}
                     </Button>
@@ -150,31 +160,31 @@ const Collections = () => {
               </div>
             </div>
 
-            {/* View Toggle & Mobile Filter */}
+            {/* View Toggle & Filters */}
             <div className="flex items-center gap-4">
               <Button
-                variant="ghost"
+                variant="luxury-secondary"
                 size="icon"
                 onClick={() => setIsFilterOpen(!isFilterOpen)}
                 className="lg:hidden"
               >
-                <Filter className="w-4 h-4" />
+                <SlidersHorizontal className="w-4 h-4" />
               </Button>
               
-              <div className="flex items-center gap-1 bg-soft-lilac rounded-full p-1">
+              <div className="flex items-center gap-2 bg-soft-pearl rounded-lg p-1 border border-deep-charcoal/10">
                 <Button
-                  variant={viewMode === "grid" ? "premium-secondary" : "ghost"}
+                  variant={viewMode === "grid" ? "luxury-secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("grid")}
-                  className="rounded-full"
+                  className="rounded-md"
                 >
                   <Grid className="w-4 h-4" />
                 </Button>
                 <Button
-                  variant={viewMode === "list" ? "premium-secondary" : "ghost"}
+                  variant={viewMode === "list" ? "luxury-secondary" : "ghost"}
                   size="sm"
                   onClick={() => setViewMode("list")}
-                  className="rounded-full"
+                  className="rounded-md"
                 >
                   <List className="w-4 h-4" />
                 </Button>
@@ -183,40 +193,77 @@ const Collections = () => {
           </div>
 
           {/* Results Count */}
-          <div className="mb-6">
-            <p className="font-body text-sm text-mid-plum">
-              Showing {filteredProducts.length} of {products.length} products
+          <div className="mb-12">
+            <p className="font-body text-sm text-rich-burgundy uppercase tracking-wider">
+              {filteredProducts.length} RESULTS
             </p>
           </div>
 
-          {/* Products Grid */}
+          {/* On.com Style Products Grid with Enhanced Cards */}
           {filteredProducts.length > 0 ? (
-            <div className={`grid gap-8 ${
+            <div className={`grid gap-12 ${
               viewMode === "grid" 
-                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4" 
+                ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3" 
                 : "grid-cols-1 lg:grid-cols-2"
             }`}>
               {filteredProducts.map((product) => (
-                <ProductCard 
-                  key={product.id} 
-                  {...product} 
-                  isNewArrival={false}
-                />
+                <div key={product.id} className="group">
+                  {/* Enhanced Product Card with On.com styling */}
+                  <div className="bg-card rounded-lg overflow-hidden shadow-card hover:shadow-luxury transition-all duration-300 hover:-translate-y-1 border border-warm-gold/10">
+                    <div className="aspect-square overflow-hidden bg-soft-pearl">
+                      <img 
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    
+                    {/* Color Swatches (On.com Style) */}
+                    <div className="p-6">
+                      <div className="flex gap-2 mb-4">
+                        {product.colors.map((color, index) => (
+                          <div
+                            key={index}
+                            className="w-4 h-4 rounded-full border border-deep-charcoal/20 cursor-pointer hover:scale-110 transition-all duration-200"
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                      </div>
+                      
+                      <div className="mb-4">
+                        <h3 className="font-body font-medium text-sm text-deep-charcoal mb-2">
+                          {product.name}
+                        </h3>
+                        <p className="font-body text-xs text-rich-burgundy mb-1 uppercase tracking-wider">
+                          {product.subtitle}
+                        </p>
+                        <p className="font-body font-bold text-lg text-deep-charcoal">
+                          ₹{product.price.toLocaleString()}.00
+                        </p>
+                      </div>
+
+                      <ProductCard 
+                        {...product} 
+                        isNewArrival={false}
+                      />
+                    </div>
+                  </div>
+                </div>
               ))}
             </div>
           ) : (
-            <div className="text-center py-16">
-              <div className="bg-soft-lilac rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-4">
-                <Filter className="w-8 h-8 text-mid-plum" />
+            <div className="text-center py-20">
+              <div className="bg-soft-pearl rounded-full w-24 h-24 flex items-center justify-center mx-auto mb-6">
+                <Filter className="w-8 h-8 text-rich-burgundy" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-deep-plum mb-2">
+              <h3 className="font-display text-2xl font-light text-deep-charcoal mb-4">
                 No products found
               </h3>
-              <p className="font-body text-mid-plum mb-6">
-                Try adjusting your filters to see more products.
+              <p className="font-body text-rich-burgundy mb-8 max-w-md mx-auto">
+                Try adjusting your filters to discover more premium pieces in our collection.
               </p>
               <Button 
-                variant="premium-primary"
+                variant="luxury-primary"
                 onClick={() => {
                   setSelectedCollection("all");
                   setSelectedSize("all");

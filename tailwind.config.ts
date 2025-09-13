@@ -47,11 +47,12 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Ashtonava Brand Colors
-        "deep-plum": "hsl(var(--deep-plum))",
-        "mid-plum": "hsl(var(--mid-plum))",
-        "lavender": "hsl(var(--lavender))",
-        "soft-lilac": "hsl(var(--soft-lilac))",
+        // Luxury Brand Colors
+        "deep-charcoal": "hsl(var(--deep-charcoal))",
+        "warm-gold": "hsl(var(--warm-gold))",
+        "cream-ivory": "hsl(var(--cream-ivory))",
+        "soft-pearl": "hsl(var(--soft-pearl))",
+        "rich-burgundy": "hsl(var(--rich-burgundy))",
         "accent-black": "hsl(var(--accent-black))",
         "pure-white": "hsl(var(--pure-white))",
       },
@@ -62,12 +63,20 @@ export default {
       backgroundImage: {
         'gradient-hero': 'var(--gradient-hero)',
         'gradient-subtle': 'var(--gradient-subtle)',
+        'gradient-luxury': 'var(--gradient-luxury)',
         'gradient-radial': 'var(--gradient-radial)',
       },
       boxShadow: {
         'premium': 'var(--shadow-premium)',
+        'luxury': 'var(--shadow-luxury)',
         'card': 'var(--shadow-card)',
         'button': 'var(--shadow-button)',
+      },
+      spacing: {
+        '18': '4.5rem',
+        '22': '5.5rem',
+        '88': '22rem',
+        '128': '32rem',
       },
       transitionTimingFunction: {
         'premium': 'cubic-bezier(0.4, 0, 0.2, 1)',

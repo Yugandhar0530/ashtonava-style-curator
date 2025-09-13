@@ -13,7 +13,7 @@ export interface CartItem {
 
 interface CartContextType {
   cartItems: CartItem[];
-  addToCart: (product: any, selectedSize: string, selectedColor?: string) => void;
+  addToCart: (product: any, selectedSize: string, selectedColor?: string, quantity?: number) => void;
   removeFromCart: (id: string) => void;
   updateQuantity: (id: string, quantity: number) => void;
   getCartTotal: () => number;
@@ -33,7 +33,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const addToCart = (product: any, selectedSize: string, selectedColor?: string) => {
+  const addToCart = (product: any, selectedSize: string, selectedColor?: string, quantity: number = 1) => {
     const cartItemId = `${product.id}-${selectedSize}-${selectedColor || 'default'}`;
     
     setCartItems(prev => {
@@ -44,7 +44,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       if (existingItem) {
         return prev.map(item =>
           item.id === cartItemId 
-            ? { ...item, quantity: item.quantity + 1 }
+            ? { ...item, quantity: item.quantity + quantity }
             : item
         );
       } else {
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           image: product.image,
           size: selectedSize,
           color: selectedColor || product.colors?.[0] || 'Default',
-          quantity: 1,
+          quantity,
         }];
       }
     });

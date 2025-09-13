@@ -16,66 +16,51 @@ const Navigation = ({ transparent = false }: { transparent?: boolean }) => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Left section */}
-          <div className="flex items-center space-x-8">
-            
-            <div className="hidden md:flex items-center space-x-6">
-              <Link to="/collections" className={`font-body font-medium text-sm transition-colors ${
-                transparent 
-                  ? 'text-pure-white/90 hover:text-pure-white' 
-                  : 'text-accent-black hover:text-deep-plum'
-              }`}>
-                SHOP
-              </Link>
-              <Link to="/collections" className={`font-body font-medium text-sm transition-colors ${
-                transparent 
-                  ? 'text-pure-white/90 hover:text-pure-white' 
-                  : 'text-accent-black hover:text-deep-plum'
-              }`}>
-                COLLECTIONS
-              </Link>
-              <Link to="/blog" className={`font-body font-medium text-sm transition-colors ${
-                transparent 
-                  ? 'text-pure-white/90 hover:text-pure-white' 
-                  : 'text-accent-black hover:text-deep-plum'
-              }`}>
-                BLOG
-              </Link>
-            </div>
-          </div>
+        <div className="flex items-center space-x-10">
+          <Link to="/" className="font-display text-xl font-light text-pure-white hover:text-warm-gold transition-colors tracking-wider">
+            ASHTONAVA
+          </Link>
+          
+          <nav className="hidden md:flex items-center space-x-8">
+            <Link to="/" className="font-body text-sm font-medium text-pure-white/90 hover:text-warm-gold transition-colors tracking-wide">
+              HOMEPAGE
+            </Link>
+            <Link to="/men" className="font-body text-sm font-medium text-pure-white/90 hover:text-warm-gold transition-colors tracking-wide">
+              MEN
+            </Link>
+            <Link to="/collections" className="font-body text-sm font-medium text-pure-white/90 hover:text-warm-gold transition-colors tracking-wide">
+              COLLECTIONS
+            </Link>
+            <Link to="#" className="font-body text-sm font-medium text-pure-white/90 hover:text-warm-gold transition-colors tracking-wide">
+              BLOG
+            </Link>
+          </nav>
+        </div>
 
           {/* Center - New Arrivals (optional) */}
           
 
           {/* Right section */}
-          <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon" className={`hidden md:flex ${
-              transparent ? 'text-pure-white/90 hover:text-pure-white hover:bg-pure-white/10' : ''
-            }`}>
-              <Search className="h-4 w-4" />
+        <div className="flex items-center space-x-6">
+          <Button variant="ghost" size="icon" className="text-pure-white hover:bg-warm-gold/20 hover:text-warm-gold transition-colors">
+            <Search className="w-5 h-5" />
+          </Button>
+          <Link to="/account">
+            <Button variant="ghost" size="icon" className="text-pure-white hover:bg-warm-gold/20 hover:text-warm-gold transition-colors">
+              <User className="w-5 h-5" />
             </Button>
-            <Link to="/account">
-              <Button variant="ghost" size="icon" className={transparent ? 'text-pure-white/90 hover:text-pure-white hover:bg-pure-white/10' : ''}>
-                <User className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link to="/cart">
-              <Button variant="ghost" size="icon" className={`relative ${transparent ? 'text-pure-white/90 hover:text-pure-white hover:bg-pure-white/10' : ''}`}>
-                <ShoppingBag className="h-4 w-4" />
-                {cartCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-deep-plum text-pure-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-body font-medium">
-                    {cartCount}
-                  </span>
-                )}
-              </Button>
-            </Link>
-            
-            {/* Mobile menu button */}
-            <Button variant="ghost" size="icon" className={`md:hidden ${
-              transparent ? 'text-pure-white/90 hover:text-pure-white hover:bg-pure-white/10' : ''
-            }`} onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+          </Link>
+          <Link to="/cart" className="relative">
+            <Button variant="ghost" size="icon" className="text-pure-white hover:bg-warm-gold/20 hover:text-warm-gold transition-colors">
+              <ShoppingBag className="w-5 h-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-warm-gold text-deep-charcoal text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+                  {cartCount}
+                </span>
+              )}
             </Button>
-          </div>
+          </Link>
+        </div>
         </div>
 
         {/* Mobile menu */}
